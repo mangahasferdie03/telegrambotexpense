@@ -21,8 +21,9 @@ logger = logging.getLogger(__name__)
 
 class ExpenseTrackerBot:
     def __init__(self):
-        self.telegram_token = os.getenv('TELEGRAM_BOT_TOKEN')
-        self.openai_client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+        self.telegram_token = os.getenv('TELEGRAM_BOT_TOKEN') or '8112811334:AAGWhQz7MVRaEFcOyNs442ErWGeYSV8tMqw'
+        openai_key = os.getenv('OPENAI_API_KEY') or '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'
+        self.openai_client = OpenAI(api_key=openai_key)
         self.ph_timezone = pytz.timezone('Asia/Manila')
         self.pending_expenses = {}
         
